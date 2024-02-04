@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: USER-SERVICE
+  flyway:
+    user: root
+    password: root
+    url: jdbc:postgresql://127.0.0.1:5445/findjob-dev
+
+findjob:
+  database:
+    host: 127.0.0.1
+    port: 5445
+    name: findjob-dev
+    schema: public
+    username: root
+    password: root
+    pool:
+      size:
+        initial: 3
+        max: 10
+
+server:
+  port: 8087

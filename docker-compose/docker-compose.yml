@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  user-service:
+    image: postgres
+    container_name: db
+    ports:
+      - "5445:5432"
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=findjob-dev
