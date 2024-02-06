@@ -3,6 +3,7 @@ package com.abdullah.handler;
 import com.abdullah.dto.request.CreateFirmRequest;
 import com.abdullah.dto.response.CreateFirmResponse;
 import com.abdullah.dto.response.CreateUserResponse;
+import com.abdullah.dto.response.FirmDetailsResponse;
 import com.abdullah.service.IFirmService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -41,5 +42,10 @@ public class FirmHandler {
         UUID id = UUID.fromString(request.pathVariable("id"));
         return ServerResponse.ok().body(firmService.delete(id), Void.class);
 
+    }
+
+    public Mono<ServerResponse> getFirmDetailsByName(ServerRequest request) {
+        String name = request.pathVariable("name");
+        return ServerResponse.ok().body(firmService.getFirmDetailsByName(name), FirmDetailsResponse.class);
     }
 }

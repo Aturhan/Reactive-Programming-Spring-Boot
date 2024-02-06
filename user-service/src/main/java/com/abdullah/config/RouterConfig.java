@@ -43,6 +43,7 @@ public class RouterConfig {
                 path(FIRM_ROUTE),
                 route(GET("/"),firmHandler::findAll)
                         .andRoute(GET("/{id}"),firmHandler::findById)
+                        .andRoute(GET("/name/{name}"),firmHandler::getFirmDetailsByName)
                         .andRoute(POST("/"), firmHandler::create)
                         .andRoute(DELETE("/{id}"), firmHandler::delete));
 

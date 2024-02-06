@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: JOB-MANAGEMENT-SERVICE
+
+server:
+  port: 8088
+
+
+

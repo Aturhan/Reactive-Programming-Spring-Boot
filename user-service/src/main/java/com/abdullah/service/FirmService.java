@@ -5,6 +5,7 @@ import com.abdullah.dto.request.CreateFirmRequest;
 import com.abdullah.dto.response.CreateFirmResponse;
 
 
+import com.abdullah.dto.response.FirmDetailsResponse;
 import com.abdullah.entity.Firm;
 import com.abdullah.repository.FirmRepository;
 import jakarta.ws.rs.NotFoundException;
@@ -105,4 +106,24 @@ public class FirmService implements IFirmService{
         return firmRepository.deleteById(id)
                 .onErrorResume(NotFoundException.class, ex -> ServerResponse.notFound().build().then());
     }
+    @Override
+    public Mono<FirmDetailsResponse> getFirmDetailsByName(String name) {
+        log.info("request incoming: "+name);
+        return firmRepository.findByName(name)
+                .log(log.getName())
+                .flatMap(firm ->{
+                    log.info("firm: "+firm);
+                    if (firm != null){
+
+                        return Mono.just(FirmDetailsResponse.builder()
+                                .name(firm.getName())
+                                .email(firm.getEmail())
+                                .category(firm.getCategory())
+                                .build());
+                    } else {
+                        return null;
+                    }
+                    });
+                }
+
 }
