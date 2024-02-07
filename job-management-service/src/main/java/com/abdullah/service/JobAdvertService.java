@@ -37,7 +37,7 @@ public class JobAdvertService {
     }
 
     public Mono<JobAdvertResponse> save(CreateJobAdvertRequest request){
-        LocalDate closingDate = LocalDate.now().minusDays(1).plusDays(request.dayCount());
+        LocalDate closingDate = LocalDate.now().plusDays(request.dayCount());
         return webClient
                 .get()
                 .uri("/v1/firm/name/{name}",request.firmName())
