@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: AUTH-SERVICE
+
+jwt:
+  secret: GWjtA5DqSZ4dwrLcy7gvTruNxbgca3OiWsAxIhiQn2c3yDMV6TO5zQvEtMqyt5nfxqdSPQURXSD63bYCqXpbqYe8EPkiFDsL4EjntqKAZouJIG/qQNvQg+R+O6JJqyseUh6OF9UmNmxeALmAP39yzoUieiuANGCYboiRc3DcgUc=
+  expiration: 86400
+
+server:
+  port: 8089

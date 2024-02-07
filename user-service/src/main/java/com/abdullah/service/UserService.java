@@ -1,17 +1,17 @@
 package com.abdullah.service;
 
+
 import com.abdullah.dto.request.CreateUserRequest;
 import com.abdullah.dto.response.CreateUserResponse;
-import com.abdullah.dto.response.CreateUserDto;
 import com.abdullah.entity.Enumerations.Role;
 import com.abdullah.entity.UserModel;
 import com.abdullah.repository.UserModelRepository;
 import jakarta.ws.rs.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.server.ServerResponse;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 
@@ -27,6 +27,7 @@ public class UserService implements IUserService {
 
     public UserService(UserModelRepository userModelRepository) {
         this.userModelRepository = userModelRepository;
+
     }
     @Transactional
     @Override
@@ -74,6 +75,7 @@ public class UserService implements IUserService {
     }
 
 
+
     @Override
     public Mono<List<CreateUserResponse>>findAll() {
             return userModelRepository.findAll()
@@ -101,6 +103,19 @@ public class UserService implements IUserService {
         return userModelRepository.findByEmail(email)
                 .map(user -> user.getRole().equals(Role.OWNER.getValue()));
 
+    }
+
+    private Mono<CreateUserResponse> findByEmail(String email) {
+        return userModelRepository.findByEmail(email)
+                .map(user ->
+                        CreateUserResponse.builder()
+                        .id(user.getId())
+                        .email(user.getEmail())
+                        .title(user.getTitle())
+                        .name(user.getName())
+                        .interest(user.getInterest())
+                        .createdAt(user.getCreatedAt())
+                        .build());
     }
 
 

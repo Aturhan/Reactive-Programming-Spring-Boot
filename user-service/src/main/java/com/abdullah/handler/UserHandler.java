@@ -1,10 +1,11 @@
 package com.abdullah.handler;
 
+
 import com.abdullah.dto.request.CreateUserRequest;
-import com.abdullah.dto.response.CreateUserDto;
+
 import com.abdullah.dto.response.CreateUserResponse;
 import com.abdullah.service.IUserService;
-import org.springframework.http.MediaType;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -43,5 +44,6 @@ public class UserHandler {
         return ServerResponse.ok().body(userService.delete(id),Void.class);
 
     }
+
 
 }
