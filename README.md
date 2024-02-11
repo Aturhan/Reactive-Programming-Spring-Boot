@@ -3,7 +3,7 @@
 </p>
 
 ## Description
-  <p align="center">I tried to do this job posting microservice project entirely using Reactive Programing.</p>
+  <p align="center">I tried to do this job posting microservice project entirely using Reactive Programming.</p>
     <p align="center">
 
 ## Dependencies
